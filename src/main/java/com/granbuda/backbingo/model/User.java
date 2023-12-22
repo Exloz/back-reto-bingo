@@ -4,7 +4,7 @@ import java.util.List;
 
 public class User {
 
-    private String Id;
+    private String id;
     private String name;
     private List<UserBingoTable> userBingoTableList;
 
@@ -12,17 +12,17 @@ public class User {
     }
 
     public User(String id, String name, List<UserBingoTable> userBingoTableList) {
-        Id = id;
+        this.id = id;
         this.name = name;
         this.userBingoTableList = userBingoTableList;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -44,7 +44,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "Id='" + Id + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", bingoTableList=" + userBingoTableList +
                 '}';
