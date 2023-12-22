@@ -1,22 +1,14 @@
 package com.granbuda.backbingo.model;
 
 public class Cell {
-    private String userBingoId;
     private Integer number;
     private Integer coordinate;
 
-    public Cell(String userBingoId, Integer number, Integer coordinate) {
-        this.userBingoId = userBingoId;
+    public Cell() {
+    }
+    public Cell(Integer number, Integer coordinate) {
         this.number = number;
         this.coordinate = coordinate;
-    }
-
-    public String getUserBingoId() {
-        return userBingoId;
-    }
-
-    public void setUserBingoId(String userBingoId) {
-        this.userBingoId = userBingoId;
     }
 
     public Integer getNumber() {
