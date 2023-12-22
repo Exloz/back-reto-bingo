@@ -6,15 +6,15 @@ public class User {
 
     private String Id;
     private String name;
-    private List<BingoTable> bingoTableList;
+    private List<UserBingoTable> userBingoTableList;
 
     public User() {
     }
 
-    public User(String id, String name, List<BingoTable> bingoTableList) {
+    public User(String id, String name, List<UserBingoTable> userBingoTableList) {
         Id = id;
         this.name = name;
-        this.bingoTableList = bingoTableList;
+        this.userBingoTableList = userBingoTableList;
     }
 
     public String getId() {
@@ -33,12 +33,12 @@ public class User {
         this.name = name;
     }
 
-    public List<BingoTable> getBingoTableList() {
-        return bingoTableList;
+    public List<UserBingoTable> getBingoTableList() {
+        return userBingoTableList;
     }
 
-    public void setBingoTableList(List<BingoTable> bingoTableList) {
-        this.bingoTableList = bingoTableList;
+    public void setBingoTableList(List<UserBingoTable> userBingoTableList) {
+        this.userBingoTableList = userBingoTableList;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class User {
         return "User{" +
                 "Id='" + Id + '\'' +
                 ", name='" + name + '\'' +
-                ", bingoTableList=" + bingoTableList +
+                ", bingoTableList=" + userBingoTableList +
                 '}';
     }
 }
