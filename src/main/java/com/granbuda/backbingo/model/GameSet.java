@@ -1,7 +1,10 @@
 package com.granbuda.backbingo.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
+@Document(collection = "GameSets")
 public class GameSet {
     private String id;
     private List<Integer> ballots;
