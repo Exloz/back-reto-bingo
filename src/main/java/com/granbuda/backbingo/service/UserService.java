@@ -33,10 +33,10 @@ public class UserService {
     }
 
     public UserListResponse listUsers(){
-        GameSet optionalGameSet = repository.findByIsActiveGameTrue();
+        GameSet activeGameSet = repository.findByIsActiveGameTrue();
         UserListResponse userListResponse = new UserListResponse();
 
-        List<User> userList = optionalGameSet.getUserList();
+        List<User> userList = activeGameSet.getUserList();
         for(User user: userList){
             userListResponse.addUser(user.getUserName());
         }

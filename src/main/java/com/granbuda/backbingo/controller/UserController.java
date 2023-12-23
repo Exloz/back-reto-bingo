@@ -20,12 +20,12 @@ public class UserController {
 
     @GetMapping("/userlist")
     public ResponseEntity<UserListResponse> listUsers(){
-        return new ResponseEntity<>(userService.listUsers(), HttpStatus.OK);
-//        try{
-//            return new ResponseEntity<>(userService.listUsers(), HttpStatus.OK);
-//        } catch (Exception e){
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
+
+        try{
+            return new ResponseEntity<>(userService.listUsers(), HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/create")
