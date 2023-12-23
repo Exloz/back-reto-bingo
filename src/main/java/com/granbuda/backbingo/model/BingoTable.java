@@ -3,7 +3,7 @@ package com.granbuda.backbingo.model;
 import java.util.List;
 
 
-public class UserBingoTable {
+public class BingoTable {
 
 
     private String id;
@@ -12,10 +12,10 @@ public class UserBingoTable {
     private List<Cell> cellList;
     private Boolean isActive;
 
-    public UserBingoTable() {
+    public BingoTable() {
     }
 
-    public UserBingoTable(String id, String userId, String gameSetId, List<Cell> cellList, Boolean isActive) {
+    public BingoTable(String id, String userId, String gameSetId, List<Cell> cellList, Boolean isActive) {
         this.id = id;
         this.userId = userId;
         this.gameSetId = gameSetId;

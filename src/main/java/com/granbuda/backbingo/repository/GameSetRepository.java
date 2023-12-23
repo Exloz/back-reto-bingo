@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface GameSetRepository extends MongoRepository<GameSet, String> {
 
-    Optional<GameSet> findByIsActiveGameTrue();
+    GameSet findByIsActiveGameTrue();
 }

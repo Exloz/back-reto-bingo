@@ -14,6 +14,7 @@ public class GameSet {
     private List<User> userList;
     private Boolean isActiveGame;
 
+
     public GameSet() {
         ballots = new ArrayList<>();
         userList = new ArrayList<>();
@@ -25,6 +26,10 @@ public class GameSet {
         this.ballots = ballots;
         this.userList = userList;
         this.isActiveGame= isActiveGame;
+    }
+
+    public void addUser(User user){
+        userList.add(user);
     }
 
     public String getId() {
@@ -56,5 +61,15 @@ public class GameSet {
 
     public void setActiveGame(Boolean activeGame) {
         isActiveGame = activeGame;
+    }
+
+    @Override
+    public String toString() {
+        return "GameSet{" +
+                "id='" + id + '\'' +
+                ", ballots=" + ballots +
+                ", userList=" + userList +
+                ", isActiveGame=" + isActiveGame +
+                '}';
     }
 }

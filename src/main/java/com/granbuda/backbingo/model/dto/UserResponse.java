@@ -5,31 +5,28 @@ import com.granbuda.backbingo.model.Cell;
 import java.util.List;
 
 public class UserResponse {
-    private String id;
-    private String name;
-    private List<Cell> cellList;
+    private String gameSetId;
+    private String userName;
 
-    public String getId() {
-        return id;
+    public UserResponse(String gameSetId, String userName) {
+        this.gameSetId = gameSetId;
+        this.userName = userName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getGameSetId() {
+        return gameSetId;
     }
 
-    public String getName() {
-        return name;
+    public void setGameSetId(String gameSetId) {
+        this.gameSetId = gameSetId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUserName() {
+        return userName;
     }
 
-    public List<Cell> getCellList() {
-        return cellList;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setCellList(List<Cell> cellList) {
-        this.cellList = cellList;
-    }
 }

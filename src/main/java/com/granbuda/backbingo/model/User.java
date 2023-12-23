@@ -1,55 +1,33 @@
 package com.granbuda.backbingo.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
-
 public class User {
 
-    private String id;
-    private String name;
-    private List<UserBingoTable> userBingoTableList;
+    private String userName;
+    private BingoTable bingoTable;
 
     public User() {
+
     }
 
-    public User(String id, String name, List<UserBingoTable> userBingoTableList) {
-        this.id = id;
-        this.name = name;
-        this.userBingoTableList = userBingoTableList;
+    public User(String userName, BingoTable bingoTable) {
+        this.userName = userName;
+        this.bingoTable = bingoTable;
     }
 
-    public String getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getName() {
-        return name;
+    public BingoTable getBingoTable() {
+        return bingoTable;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBingoTable(BingoTable bingoTable) {
+        this.bingoTable = bingoTable;
     }
 
-    public List<UserBingoTable> getBingoTableList() {
-        return userBingoTableList;
-    }
-
-    public void setBingoTableList(List<UserBingoTable> userBingoTableList) {
-        this.userBingoTableList = userBingoTableList;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", bingoTableList=" + userBingoTableList +
-                '}';
-    }
 }
