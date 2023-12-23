@@ -1,14 +1,11 @@
 package com.granbuda.backbingo.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.List;
 
-@Document(collection = "UserTables")
+
 public class UserBingoTable {
 
-    @Id
+
     private String id;
     private String userId;
     private String gameSetId;

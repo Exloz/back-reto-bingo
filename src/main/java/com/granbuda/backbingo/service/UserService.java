@@ -10,10 +10,7 @@ import com.granbuda.backbingo.repository.UserBingoTableRepository;
 import com.granbuda.backbingo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -21,6 +18,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final GameSetRepository gameSetRepository;
     private final UserBingoTableRepository userBingoTableRepository;
+    private final Random random = new Random();
 
     public UserService(UserRepository userRepository, GameSetRepository gameSetRepository, UserBingoTableRepository userBingoTableRepository) {
         this.userRepository = userRepository;
@@ -58,41 +56,24 @@ public class UserService {
 
     private List<Cell> createUserBingoCells(){
         List<Cell> cellList = new ArrayList<>();
-        for (int i=0; i<5; i++){
+        Set<Integer> usedNumbers = new HashSet<>();
+
+        for (int i = 0; i < 25; i++) {
+            int baseNumber = (i / 5) * 15 + 1;
+            int number;
+            do {
+                number = generateRandomIntInRange(baseNumber);
+            } while (usedNumbers.contains(number));
+            usedNumbers.add(number);
             Cell cell = new Cell();
-            cell.setNumber(generateRandomIntInRange(1));
-            cell.setNumber(i+1);
-            cellList.add(cell);
-        }
-        for (int i=5; i<10; i++){
-            Cell cell = new Cell();
-            cell.setNumber(generateRandomIntInRange(16));
-            cell.setNumber(i+1);
-            cellList.add(cell);
-        }
-        for (int i=10; i<15; i++){
-            Cell cell = new Cell();
-            cell.setNumber(generateRandomIntInRange(31));
-            cell.setNumber(i+1);
-            cellList.add(cell);
-        }
-        for (int i=15; i<20; i++){
-            Cell cell = new Cell();
-            cell.setNumber(generateRandomIntInRange(46));
-            cell.setNumber(i+1);
-            cellList.add(cell);
-        }
-        for (int i=20; i<25; i++){
-            Cell cell = new Cell();
-            cell.setNumber(generateRandomIntInRange(61));
-            cell.setNumber(i+1);
+            cell.setNumber(number);
+            cell.setCoordinate(i + 1);
             cellList.add(cell);
         }
         return cellList;
     }
 
-    private int generateRandomIntInRange(Integer integer){
-        Random random = new Random();
-        return random.nextInt(15)+integer;
+    private int generateRandomIntInRange(int baseNumber) {
+        return random.nextInt(15) + baseNumber;
     }
 }
