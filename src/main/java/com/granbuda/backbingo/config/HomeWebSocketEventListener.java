@@ -19,7 +19,7 @@ public class HomeWebSocketEventListener {
     @EventListener
     public void handleHomeWebSocketConnectListener(SessionDisconnectEvent event){
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-        String username = (String) headerAccessor.getSessionAttributes().get("username");
+        String username = (String) headerAccessor.getSessionAttributes().get("userName");
         if(username != null){
             var chatMessage = HomeWebSocketDTO.builder()
                     .type(MessageType.LEAVE)
