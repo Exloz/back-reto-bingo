@@ -13,7 +13,7 @@ public class HomeWebSocketController {
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
     public HomeWebSocketDTO sendMessage(@Payload HomeWebSocketDTO chatMessage) {
-        System.out.println(chatMessage);
+        //System.out.println(chatMessage);
         return chatMessage;
     }
 
@@ -21,7 +21,7 @@ public class HomeWebSocketController {
     @SendTo("/topic/public")
     public HomeWebSocketDTO addUser(@Payload HomeWebSocketDTO chatMessage,
                                SimpMessageHeaderAccessor headerAccessor) {
-        System.out.println(chatMessage);
+        //System.out.println(chatMessage);
         headerAccessor.getSessionAttributes().put("userName", chatMessage.getSender());
         return chatMessage;
 
