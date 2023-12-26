@@ -19,9 +19,9 @@ public class GameCheckController {
 
     @PostMapping("/winner")
     public ResponseEntity<Boolean> checkIfWinner (@RequestBody GameCheckRequest gameCheckRequest){
-        try{
+        try {
             return new ResponseEntity<>(checkService.checkWinner(gameCheckRequest.getCellList()), HttpStatus.OK);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
