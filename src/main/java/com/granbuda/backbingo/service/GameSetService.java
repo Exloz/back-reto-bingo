@@ -4,6 +4,7 @@ import com.granbuda.backbingo.model.BingoTable;
 import com.granbuda.backbingo.model.Cell;
 import com.granbuda.backbingo.model.GameSet;
 import com.granbuda.backbingo.model.User;
+import com.granbuda.backbingo.model.dto.BingoBallotsResponse;
 import com.granbuda.backbingo.model.dto.BingoTableResponse;
 import com.granbuda.backbingo.model.dto.GameSetResponse;
 import com.granbuda.backbingo.model.dto.UserListResponse;
@@ -59,6 +60,7 @@ public class GameSetService {
 
     }
 
+
     private BingoTable createBingoTable(){
         BingoTable bingoTable = new BingoTable();
         bingoTable.setActive(true);
@@ -103,4 +105,5 @@ public class GameSetService {
 
         return userListResponse;
     }
+
 }

@@ -21,6 +21,4 @@ public class HomeWebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .setAllowedOrigins("http://localhost:4200")
                 .withSockJS();
     }
-
-
 }

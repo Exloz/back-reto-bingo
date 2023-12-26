@@ -1,5 +1,7 @@
 package com.granbuda.backbingo.controller;
 
+import com.granbuda.backbingo.model.dto.BingoBallotsResponse;
+import com.granbuda.backbingo.model.dto.BingoOneBallotResponse;
 import com.granbuda.backbingo.model.dto.HomeWebSocketDTO;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -34,6 +36,15 @@ public class HomeWebSocketController {
         System.out.println(chatMessage);
         headerAccessor.getSessionAttributes().put("userName", chatMessage.getSender());
         return chatMessage;
+
+    }
+
+    @MessageMapping("/chat.generateBallot")
+    @SendTo("/topic/public")
+    public void generateBallot(@Payload HomeWebSocketDTO chatMessage,
+                                                 SimpMessageHeaderAccessor headerAccessor) {
+        System.out.println(chatMessage);
+        headerAccessor.getSessionAttributes().put("userName", chatMessage.getSender());
 
     }
 
