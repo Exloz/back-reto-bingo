@@ -20,7 +20,8 @@ public class GameCheckService {
         GameSet activeGameSet = repository.findByIsActiveGameTrue();
         List<Integer> generatedBalls = activeGameSet.getBallots();
 
-        return checkAllCellsExceptThirteen(cellList, generatedBalls) ||
+        boolean isWinner=
+                checkAllCellsExceptThirteen(cellList, generatedBalls) ||
                 checkSpecificCells(new int[]{5, 9, 17, 21}, cellList, generatedBalls) ||
                 checkSpecificCells(new int[]{1, 7, 19, 25}, cellList, generatedBalls) ||
                 checkRangeOfCells(new int[]{1, 5}, cellList, generatedBalls) ||
@@ -34,6 +35,11 @@ public class GameCheckService {
                 checkHorizontalLinesExcluding(new int[]{3, 23}, new int[]{13}, cellList, generatedBalls) ||
                 checkHorizontalLines(new int[]{4, 24}, cellList, generatedBalls) ||
                 checkSpecialPattern(new int[]{5, 10, 12, 20, 25}, cellList, generatedBalls);
+        if (isWinner){
+            activeGameSet.setActiveGame(false);
+            repository.save(activeGameSet);
+        }
+        return isWinner;
     }
 
     private boolean checkAllCellsExceptThirteen(List<Cell> cellList, List<Integer> generatedBalls) {
