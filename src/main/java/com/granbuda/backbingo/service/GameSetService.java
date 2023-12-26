@@ -32,7 +32,7 @@ public class GameSetService {
             GameSet gameSet = new GameSet();
             GameSet newGameSet = repository.save(gameSet);
             gameSetResponse.setId(newGameSet.getId());
-            gameSetResponse.setActiveGame(newGameSet.getActiveGame());
+            gameSetResponse.setActiveGame(true);
             return gameSetResponse;
         }
         gameSetResponse.setId(activeGameSet.getId());

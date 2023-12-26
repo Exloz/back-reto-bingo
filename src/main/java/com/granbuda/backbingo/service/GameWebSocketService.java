@@ -52,7 +52,6 @@ public class GameWebSocketService {
         } while (generatedNumbers.contains(number));
 
         ballots.add(number);
-        System.out.println(ballots);
         activeGameSet.setBallots(ballots);
         generatedNumbers.add(number);
         repository.save(activeGameSet);
@@ -65,6 +64,7 @@ public class GameWebSocketService {
 
     public void stopGeneratingNumbers() {
         if (timer != null || !isActiveGame) {
+            assert timer != null;
             timer.cancel();
             timer = null;
             generatedNumbers.clear();
