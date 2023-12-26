@@ -2,12 +2,9 @@ package com.granbuda.backbingo.service;
 
 import com.granbuda.backbingo.model.GameSet;
 import com.granbuda.backbingo.model.dto.BingoOneBallotResponse;
-import com.granbuda.backbingo.model.dto.HomeWebSocketDTO;
 import com.granbuda.backbingo.model.dto.MessageType;
 import com.granbuda.backbingo.repository.GameSetRepository;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,6 +16,8 @@ public class GameWebSocketService {
     private final Set<Integer> generatedNumbers = new HashSet<>();
     private final Random random = new Random();
     private Timer timer;
+    private Boolean isActiveGame;
+    List<Integer> ballots = new ArrayList<>();
 
     public GameWebSocketService(GameSetRepository repository, SimpMessagingTemplate messagingTemplate) {
         this.repository = repository;
@@ -40,7 +39,7 @@ public class GameWebSocketService {
 
     private void generateUniqueBallot() {
         GameSet activeGameSet = repository.findByIsActiveGameTrue();
-        List<Integer> ballots = new ArrayList<>();
+        isActiveGame = activeGameSet.getActiveGame();
 
         if (generatedNumbers.size() >= 75) {
             stopGeneratingNumbers();
@@ -53,6 +52,7 @@ public class GameWebSocketService {
         } while (generatedNumbers.contains(number));
 
         ballots.add(number);
+        System.out.println(ballots);
         activeGameSet.setBallots(ballots);
         generatedNumbers.add(number);
         repository.save(activeGameSet);
@@ -64,9 +64,11 @@ public class GameWebSocketService {
     }
 
     public void stopGeneratingNumbers() {
-        if (timer != null) {
+        if (timer != null || !isActiveGame) {
             timer.cancel();
             timer = null;
+            generatedNumbers.clear();
+            ballots.clear();
         }
     }
 }
